@@ -1,0 +1,7 @@
+h1 Sua hoc vien
+div
+    label Ten cu:
+    span=user.name
+form(action="/edit/"+user.id, method="post")
+    input(type="text", name="name")
+    button Sua

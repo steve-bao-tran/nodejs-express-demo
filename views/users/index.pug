@@ -1,0 +1,24 @@
+extends ../layouts/header
+block content
+    h1 List ebooks
+    form(action="/user/search", method="get", class="d-flex")
+        input(type="text", name="q", class="form-control")
+        button(class="btn btn-primary ml-2") Search
+    table.table
+        tr
+            th Name
+            th Phone
+            th Action
+        each item in users
+            tr
+                td=item.name
+                td=item.phone
+                td
+                    span &nbsp
+                    a.btn.btn-light(href="/user/"+item.id) View
+                    span &nbsp
+                    a.btn.btn-warning(href="/edit/"+item.id) Edit
+                    span &nbsp
+                    a.btn.btn-danger(href="/delete/"+item.id) Remove
+
+    a.btn.btn-primary(href="/user/create") Add

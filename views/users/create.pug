@@ -1,0 +1,25 @@
+extends ../layouts/header
+block content
+    h1 Add new an ebook
+
+    form(action='/user/create', method='post')
+        .form-group
+            label(for='name') Full name
+            input#name.form-control(type='text', name='name', value=values?values.name:'', aria-describedby='nameHelp', placeholder='Enter name...')
+            if errors
+                each er in errors
+                    .alert.alert-danger
+                        small#nameHelp.form-text.text-muted=er
+        .form-group
+            label(for='phone') Mobile
+            input#phone.form-control(type='text', name='phone', value=values?values.phone:'', aria-describedby='phoneHelp', placeholder='Enter phone...')
+            if errors
+                each er in errors
+                    .alert.alert-danger
+                        small#phoneHelp.form-text.text-muted=er
+        button.btn.btn-primary(type='submit') Create
+    //-
+        form(action="/user/create", method="post")
+            label 
+            input(type="text", name="name", class="form-control")
+            button(class="btn btn-primary") Create

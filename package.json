@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-express-demo",
+  "version": "1.0.0",
+  "description": "My project source nodejs express demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevetran1990/nodejs-express-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevetran1990/nodejs-express-demo/issues"
+  },
+  "homepage": "https://github.com/stevetran1990/nodejs-express-demo#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lowdb": "^1.0.0",
+    "pug": "^2.0.3",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
