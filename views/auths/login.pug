@@ -1,0 +1,22 @@
+extends ../layouts/header
+block content
+    h1 Login user
+
+    form(action='/auth/login', method='post')
+        .form-group
+            label(for='email') Email
+            input#email.form-control(type='email', name='email', value=values?values.email:'', aria-describedby='emailHelp', placeholder='Enter email...')
+            //-
+                if errors
+                    each er in errors
+                        .alert.alert-danger
+                            small#nameHelp.form-text.text-muted=er
+        .form-group
+            label(for='password') Mobile
+            input#password.form-control(type='password', name='password', value=values?values.password:'', aria-describedby='passwordHelp', placeholder='Enter password...')
+            //-
+                if errors
+                    each er in errors
+                        .alert.alert-danger
+                            small#phoneHelp.form-text.text-muted=er
+        button.btn.btn-primary(type='submit') Login   

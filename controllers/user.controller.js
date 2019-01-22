@@ -1,7 +1,7 @@
-/* Cách 1 */
+/* Case 1 */
 // module.exports.a = 1;
 // module.exports.b = 2;
-/* Cách 2 */
+/* Case 2 */
 // module.exports = {
 //     a:1,
 //     b:2
@@ -30,6 +30,7 @@ module.exports.search = function (req, res) {
 };
 
 module.exports.getCreate = function (req, res) {
+    console.log(req.cookies);
     res.render('users/create', {
         users: db.get('users').value()
     });

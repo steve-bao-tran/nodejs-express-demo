@@ -20,6 +20,11 @@ function middleware2 (req, res, next) {
 }
 router.get('/test', middleware1, middleware2);
 */
+router.get('/cookie', function (req, res, next) {
+    res.cookie('user-id', 123456);
+    res.send('Hello world');
+});
+
 router.get('/search', c_user.search);
 router.get('/create', c_user.getCreate);
 router.get('/:id', c_user.detail);
