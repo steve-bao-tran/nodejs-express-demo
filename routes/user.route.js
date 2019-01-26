@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const c_user = require('../controllers/user.controller');
 const v_user = require('../validate/user.validate');
+// const mw_auth = require('../middlewares/auth.middleware');
 
 /** GET RQ **/
 router.get('/', c_user.list);

@@ -1,17 +1,23 @@
+// console.log(process.env);
+require('dotenv').config();
+console.log(process.env.SESSION_SECRET);
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
+
+const mw_auth = require('./middlewares/auth.middleware');
+
 const app = express();
 const port = 3001;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 
-app.use('/user', userRoute);
+app.use('/user', mw_auth.requireAuth, userRoute);
 app.use('/auth', authRoute);
 
 app.use(express.static('public'));

@@ -3,6 +3,9 @@ block content
     h1 Login user
 
     form(action='/auth/login', method='post')
+        if errors
+            each er in errors                
+                small#nameHelp.form-text.text-muted.alert.alert-danger=er
         .form-group
             label(for='email') Email
             input#email.form-control(type='email', name='email', value=values?values.email:'', aria-describedby='emailHelp', placeholder='Enter email...')
