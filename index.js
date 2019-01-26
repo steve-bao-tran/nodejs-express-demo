@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
+const productRoute = require('./routes/product.route');
 
 const mw_auth = require('./middlewares/auth.middleware');
 
@@ -19,6 +20,7 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use('/user', mw_auth.requireAuth, userRoute);
 app.use('/auth', authRoute);
+app.use('/product', productRoute);
 
 app.use(express.static('public'));
 

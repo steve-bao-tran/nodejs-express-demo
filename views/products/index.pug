@@ -1,0 +1,27 @@
+extends ../layouts/header
+block content
+    h1 List products 
+    //- span= tong
+
+    .wrapper-items
+        each item in products
+            .item-product
+                img.icon-pro(src=item.image, alt=item.name)
+                a(href="#")
+                    h4= item.name
+                p= item.description
+                button(class="btn btn-primary") Add to cart
+                //- span=item.id        
+
+        //- .item-product
+            img.icon-pro(src="http://lorempixel.com/g/250/250/", alt="Image product")
+            a(href="#")
+                h3 Animal fun
+            p If an unsupported status code is specified, the HTTP status is still set to statusCode and the string version of the code is sent as the response body.
+            button(class="btn btn-primary") Add to cart  
+    .paginate-comp
+        nav(aria-label="...")
+            ul.pagination              
+                each page in pagination                
+                    li.page-item
+                        a(class="page-link", href=page.link)= page.num  

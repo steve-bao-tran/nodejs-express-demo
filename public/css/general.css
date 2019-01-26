@@ -1,1 +1,24 @@
 /** Custom css code **/
+.wrapper-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.8rem;
+}
+.item-product {
+    display: block;
+    background-color: #f5f5f5;
+    border: .2px solid #d1d1d1;  
+    padding: 2px;
+}
+
+.paginate-comp {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 960px) {
+    .item-product {
+        grid-column: span 3;
+    }    
+}
