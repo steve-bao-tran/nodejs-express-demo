@@ -1,9 +1,12 @@
 const express = require('express');
+const multer = require('multer');
 
 const router = express.Router();
 const c_user = require('../controllers/user.controller');
 const v_user = require('../validate/user.validate');
 // const mw_auth = require('../middlewares/auth.middleware');
+
+var upload = multer({ dest: './public/uploads/images/' });
 
 /** GET RQ **/
 router.get('/', c_user.list);
@@ -30,6 +33,6 @@ router.get('/search', c_user.search);
 router.get('/create', c_user.getCreate);
 router.get('/:id', c_user.detail);
 /** POST RQ **/
-router.post('/create', v_user.postCreate, c_user.postCreate);
+router.post('/create', upload.single('avatar'), v_user.postCreate, c_user.postCreate);
 /** Exports module **/
 module.exports = router;
