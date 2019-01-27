@@ -2,7 +2,7 @@ extends ../layouts/header
 block content
     h1 Add new an ebook
 
-    form(action='/user/create', method='post')
+    form(action='/user/create', method='post', enctype='multipart/form-data')
         .form-group
             label(for='name') Full name
             input#name.form-control(type='text', name='name', value=values?values.name:'', aria-describedby='nameHelp', placeholder='Enter name...')
@@ -17,6 +17,9 @@ block content
                 each er in errors
                     .alert.alert-danger
                         small#phoneHelp.form-text.text-muted=er
+        .form-group
+            label(for='avatar') Avatar
+            input#avatar.form-control-file(type='file', name='avatar')
         button.btn.btn-primary(type='submit') Create
     //-
         form(action="/user/create", method="post")
