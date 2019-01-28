@@ -1,6 +1,6 @@
 // console.log(process.env);
 require('dotenv').config();
-console.log(process.env.SESSION_SECRET);
+// console.log(process.env.SESSION_SECRET);
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -8,8 +8,10 @@ const cookieParser = require('cookie-parser');
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
 const productRoute = require('./routes/product.route');
+const cartRoute = require('./routes/cart.route');
 
 const mw_auth = require('./middlewares/auth.middleware');
+const mw_session = require('./middlewares/session.middleware');
 
 const app = express();
 const port = 3001;
@@ -17,10 +19,12 @@ const port = 3001;
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(mw_session.sessCheck);
 
 app.use('/user', mw_auth.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.use('/product', productRoute);
+app.use('/cart', cartRoute);
 
 app.use(express.static('public'));
 

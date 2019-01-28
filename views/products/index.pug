@@ -10,7 +10,8 @@ block content
                 a(href="#")
                     h4= item.name
                 p= item.description
-                button(class="btn btn-primary") Add to cart
+                //- button(class="btn btn-primary") Add to cart
+                a(class="btn btn-primary", href='/cart/add/'+item.id) Add to cart
                 //- span=item.id        
 
         //- .item-product

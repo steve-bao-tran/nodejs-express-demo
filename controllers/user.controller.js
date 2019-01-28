@@ -30,7 +30,7 @@ module.exports.search = function (req, res) {
 };
 
 module.exports.getCreate = function (req, res) {
-    console.log(req.cookies);
+    // console.log(req.cookies);
     res.render('users/create', {
         users: db.get('users').value()
     });
