@@ -1,0 +1,22 @@
+extends ../layouts/header
+block content
+    h1 Transfer money
+
+    form(method='post')
+        //- input(type="hidden", name="_csrf" value=csrfToken)
+        .form-group
+            label(for='account') Account bank
+            input#account.form-control(type='text', name='account')
+            //- if errors
+                each er in errors
+                    .alert.alert-danger
+                        small#nameHelp.form-text.text-muted=er
+        .form-group
+            label(for='amount') Amount money
+            input#amount.form-control(type='text', name='amount')
+            //- if errors
+                each er in errors
+                    .alert.alert-danger
+                        small#phoneHelp.form-text.text-muted=er
+        
+        button.btn.btn-primary(type='submit') Transfer

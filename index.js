@@ -4,11 +4,13 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const csurf = require('csurf');
 
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
 const productRoute = require('./routes/product.route');
 const cartRoute = require('./routes/cart.route');
+const transferRoute = require('./routes/transfer.route');
 
 const mw_auth = require('./middlewares/auth.middleware');
 const mw_session = require('./middlewares/session.middleware');
@@ -20,11 +22,13 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(mw_session.sessCheck);
+// app.use(csurf({cookie:true}));
 
 app.use('/user', mw_auth.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.use('/product', productRoute);
 app.use('/cart', cartRoute);
+app.use('/transfer', mw_auth.requireAuth, transferRoute);
 
 app.use(express.static('public'));
 
