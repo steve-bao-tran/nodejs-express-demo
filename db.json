@@ -846,5 +846,35 @@
     }
   ],
   "sessions": [],
+  "transfers": [
+    {
+      "id": "MzXOYPUCk",
+      "amount": 300000,
+      "accountId": "009889732"
+    },
+    {
+      "id": "_7f9zPWHu",
+      "amount": 250000,
+      "accountId": "000076343243"
+    },
+    {
+      "id": "QzMZw_XLK",
+      "amount": 680000,
+      "accountId": "0980002134",
+      "userId": "SVbTPr3rQ"
+    },
+    {
+      "id": "suPPaeXCx",
+      "amount": 560000,
+      "accountId": "45435464564",
+      "userId": "SVbTPr3rQ"
+    },
+    {
+      "id": "-SZPot26K",
+      "amount": 450000,
+      "accountId": "000011112222",
+      "userId": "SVbTPr3rQ"
+    }
+  ],
   "count": 0
 }
