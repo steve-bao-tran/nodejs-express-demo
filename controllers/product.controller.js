@@ -1,6 +1,8 @@
 const db = require('../db');
 
-module.exports.list = function (req, res) {
+const md_product = require('../models/product.model');
+
+module.exports.list = async function (req, res) {
     /*  
         ?page = n
         x: perPage(limit)
@@ -43,16 +45,22 @@ module.exports.list = function (req, res) {
     }
     
 
-    res.render('products/index', {
-        // products:db.get('products').value().slice(begin, end) // case 1
-        products:db.get('products').drop(drop).take(take).value(), // case 2    
-        pagination: [
-            {link:'/product?page='+(first=='First'?p_first:first), num:first, current:p_current},
-            {link:'/product?page='+second, num:second, current:p_current},
-            {link:'/product?page='+third, num:third, current:p_current},
-            {link:'/product?page='+four, num:four, current:p_current},
-            {link:'/product?page='+(last=='Last'?p_last:last), num:last, current:p_current}
-        ],
-        tong: numPro        
+    // res.render('products/index', {
+    //     // products:db.get('products').value().slice(begin, end) // case 1
+    //     products:db.get('products').drop(drop).take(take).value(), // case 2    
+    //     pagination: [
+    //         {link:'/product?page='+(first=='First'?p_first:first), num:first, current:p_current},
+    //         {link:'/product?page='+second, num:second, current:p_current},
+    //         {link:'/product?page='+third, num:third, current:p_current},
+    //         {link:'/product?page='+four, num:four, current:p_current},
+    //         {link:'/product?page='+(last=='Last'?p_last:last), num:last, current:p_current}
+    //     ],
+    //     tong: numPro        
+    // });
+
+    var products = await md_product.find();
+
+    res.render('products/index', {       
+        products: products       
     });
 };
