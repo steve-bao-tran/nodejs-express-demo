@@ -18,8 +18,12 @@ const transferRoute = require('./routes/transfer.route');
 const mw_auth = require('./middlewares/auth.middleware');
 const mw_session = require('./middlewares/session.middleware');
 
+/*** API ** */
+const apiProductRoute = require('./api/routes/product.route');
+/*** END API  ** */
+
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -32,6 +36,9 @@ app.use('/auth', authRoute);
 app.use('/product', productRoute);
 app.use('/cart', cartRoute);
 app.use('/transfer', mw_auth.requireAuth, transferRoute);
+
+/*** USE API */
+app.use('/api/product', apiProductRoute);
 
 app.use(express.static('public'));
 
